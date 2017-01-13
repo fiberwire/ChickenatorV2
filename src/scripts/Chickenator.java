@@ -25,6 +25,10 @@ public class Chickenator extends PollingScript<ClientContext> {
 
     @Override
     public void start() {
-        tasks.addAll(Arrays.asList(new WalkToChicken(ctx)));
+
+        tasks.addAll(Arrays.asList(
+                new WalkToChicken(ctx),
+                new Loot(ctx)
+        ));
     }
 }
