@@ -8,17 +8,15 @@ public class WalkToBank extends Task<ClientContext> {
     public WalkToBank(ClientContext ctx) {
         super(ctx);
         pathToBank = new TilePath(ctx, PATH);
-        pathToChicken = new TilePath(ctx, PATH).reverse();
     }
     public static final Tile[] PATH = {
             new Tile(3207, 3285, 0),  //In Pen
             new Tile(3213, 3278, 0),
-            new Tile(3216, 3268, 0),
-            new Tile(3216, 3261, 0)  //Near bank chest
+            new Tile(3214, 3257, 0)  //Near bank chest
     };
 
 
-    private TilePath pathToBank, pathToChicken;
+    private TilePath pathToBank;
 
     @Override
     public boolean activate() {

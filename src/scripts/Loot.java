@@ -17,7 +17,7 @@ public class Loot extends Task<ClientContext> {
     @Override
     public boolean activate() {
         return !ctx.groundItems.select(9).id(feather, bones).isEmpty() // Activate if we have items to be picking up
-        && ctx.backpack.select().count() >= 28;
+        && ctx.backpack.select().count() < 28;
     }
 
     @Override

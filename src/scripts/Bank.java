@@ -1,16 +1,22 @@
 package scripts;
 
 import org.powerbot.script.rt6.ClientContext;
+import org.powerbot.script.rt6.GameObject;
 import org.powerbot.script.rt6.Item;
 
 public class Bank extends Task<ClientContext> {
     public Bank(ClientContext ctx) {
         super(ctx);
     }
+    private int chestID = 79036;
+    GameObject chest = ctx.objects.id(chestID).nearest().poll();
+
 
     @Override
     public boolean activate() {
-        return !ctx.bank.opened() && ctx.bank.nearest().inViewport() && ctx.backpack.select().count() > 0;
+        return !ctx.bank.opened()
+                && chest.inViewport()
+                && ctx.backpack.select().count() > 0;
     }
 
     @Override
