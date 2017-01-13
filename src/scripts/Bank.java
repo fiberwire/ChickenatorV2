@@ -19,7 +19,6 @@ public class Bank extends Task<ClientContext> {
         if (ctx.backpack.select().count() != 0) {
             ctx.bank.depositInventory();
         }
-        ctx.bank.close();
     }
 }
     /*public void execute() {
