@@ -4,8 +4,8 @@ import org.powerbot.script.Tile;
 import org.powerbot.script.rt6.ClientContext;
 import org.powerbot.script.rt6.TilePath;
 
-public class WalkToBank extends Task<ClientContext> {
-    public WalkToBank(ClientContext ctx) {
+public class WalkToChicken extends Task<ClientContext> {
+    public WalkToChicken(ClientContext ctx) {
         super(ctx);
         pathToBank = new TilePath(ctx, PATH);
         pathToChicken = new TilePath(ctx, PATH).reverse();
@@ -22,12 +22,12 @@ public class WalkToBank extends Task<ClientContext> {
 
     @Override
     public boolean activate() {
-        return ctx.backpack.select().count() == 28
+        return ctx.backpack.select().count() == 0
                 && ctx.players.local().animation() == -1;
     }
 
     @Override
     public void execute() {
-        pathToBank.traverse();
+        pathToChicken.traverse();
     }
 }
