@@ -24,8 +24,8 @@ public class Loot extends Task<ClientContext> {
 
     @Override
     public void execute() {
-        ctx.groundItems.select().id(feather).poll().interact("pick up");
-        ctx.groundItems.select().id(bones).poll().interact("pick up");
+        ctx.groundItems.select().id(feather).poll().interact("pick-up");
+        ctx.groundItems.select().id(bones).poll().interact("pick-up");
         /*
         WalkToBank bank = new WalkToBank(ctx);
         bank.execute();
