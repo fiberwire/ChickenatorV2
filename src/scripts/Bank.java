@@ -15,15 +15,15 @@ public class Bank extends Task<ClientContext> {
     @Override
     public boolean activate() {
         return !ctx.bank.opened()
-                && chest.inViewport()
                 && ctx.backpack.select().count() > 0;
     }
 
     @Override
     public void execute() {
-        ctx.bank.open();
         if (ctx.backpack.select().count() != 0) {
+            ctx.bank.open();
             ctx.bank.depositInventory();
+            ctx.bank.close();
         }
     }
 }

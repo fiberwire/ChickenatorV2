@@ -11,6 +11,7 @@ public class WalkToChicken extends Task<ClientContext> {
         penArea = new Area(AttackChicken.nw, AttackChicken.se);
         pathToChicken = new TilePath(ctx, PATH).reverse();
     }
+
     public static final Tile[] PATH = {
             new Tile(3206, 3282, 0),  //In front of pen
             new Tile(3213, 3278, 0),
@@ -24,7 +25,7 @@ public class WalkToChicken extends Task<ClientContext> {
     @Override
     public boolean activate() {
         return ctx.backpack.select().count() == 0
-                || !penArea.contains(ctx.players.local());
+                && !penArea.contains(ctx.players.local());
     }
 
     @Override

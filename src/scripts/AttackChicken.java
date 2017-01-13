@@ -24,7 +24,7 @@ public class AttackChicken extends Task<ClientContext> {
     @Override
     public boolean activate() {
         return
-                !ctx.npcs.within(area).id(chickenID).isEmpty()
+                !ctx.npcs.select().within(area).id(chickenID).isEmpty()
                         && ctx.backpack.select().count() < 28
                         && ctx.players.local().animation() == -1;
     }
