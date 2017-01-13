@@ -13,23 +13,17 @@ public class Loot extends Task<ClientContext> {
 
     int feather = 314;
     int bones = 526;
-    int eggs = 1944;
-    int cornucopia = 14537;
 
     @Override
     public boolean activate() {
-        return ctx.groundItems.select().id(feather).isEmpty()
-                || ctx.groundItems.select().id(bones).isEmpty();
+        return !ctx.groundItems.select(9).id(feather, bones).isEmpty() // Activate if we have items to be picking up
+        && ctx.backpack.select().count() >= 28;
     }
 
     @Override
     public void execute() {
-        ctx.groundItems.select().id(feather).poll().interact("pick-up");
-        ctx.groundItems.select().id(bones).poll().interact("pick-up");
-        /*
-        WalkToBank bank = new WalkToBank(ctx);
-        bank.execute();
-        */
-
+        for (GroundItem i : ctx.groundItems) {
+            i.interact("Take", i.name()); // We supply the Item Name as the option to prevent it grabbing the wrong thing
+        }
     }
 }
