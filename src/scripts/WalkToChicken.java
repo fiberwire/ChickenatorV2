@@ -8,6 +8,7 @@ import org.powerbot.script.rt6.TilePath;
 public class WalkToChicken extends Task<ClientContext> {
     public WalkToChicken(ClientContext ctx) {
         super(ctx);
+        penArea = new Area(AttackChicken.nw, AttackChicken.se);
         pathToChicken = new TilePath(ctx, PATH).reverse();
     }
     public static final Tile[] PATH = {
@@ -17,13 +18,13 @@ public class WalkToChicken extends Task<ClientContext> {
             new Tile(3214, 3257, 0)  //Near bank chest
     };
 
-
+    Area penArea;
     private TilePath pathToChicken;
 
     @Override
     public boolean activate() {
         return ctx.backpack.select().count() == 0
-                || !ctx.players.local().WithinArea(new Area());
+                || !penArea.contains(ctx.players.local());
     }
 
     @Override

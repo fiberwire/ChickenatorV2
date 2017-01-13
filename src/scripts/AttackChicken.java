@@ -10,6 +10,7 @@ import org.powerbot.script.rt6.Npc;
 public class AttackChicken extends Task<ClientContext> {
     public AttackChicken(ClientContext ctx) {
         super(ctx);
+        area = new Area(nw, se);
     }
 
     //corners
@@ -18,11 +19,12 @@ public class AttackChicken extends Task<ClientContext> {
 
     int[] chickenID = new int[]{1017, 41};
     Npc chicken;
+    Area area;
 
     @Override
     public boolean activate() {
         return
-                !ctx.npcs.within(new Area(nw, se)).id(chickenID).isEmpty()
+                !ctx.npcs.within(area).id(chickenID).isEmpty()
                         && ctx.backpack.select().count() < 28
                         && ctx.players.local().animation() == -1;
     }
