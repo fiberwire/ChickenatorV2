@@ -10,8 +10,9 @@ public class WalkToBank extends Task<ClientContext> {
         pathToBank = new TilePath(ctx, PATH);
     }
     public static final Tile[] PATH = {
-            new Tile(3207, 3285, 0),  //In Pen
+            new Tile(3206, 3282, 0),  //In front of pen
             new Tile(3213, 3278, 0),
+            new Tile(3215, 3269, 0),
             new Tile(3214, 3257, 0)  //Near bank chest
     };
 
@@ -20,8 +21,8 @@ public class WalkToBank extends Task<ClientContext> {
 
     @Override
     public boolean activate() {
-        return ctx.backpack.select().count() == 28
-                && ctx.players.local().inMotion();
+        return ctx.backpack.select().count() >= 28
+                && ctx.players.local().animation() == -1;
     }
 
     @Override
