@@ -23,7 +23,7 @@ public class WalkToBank extends Task<ClientContext> {
     @Override
     public boolean activate() {
         return ctx.backpack.select().count() == 28
-                && ctx.players.local().animation() == -1;
+                && ctx.players.local().inMotion();
     }
 
     @Override
