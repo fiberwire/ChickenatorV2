@@ -19,7 +19,6 @@ public class Gate extends Task<ClientContext> {
     @Override
     public boolean activate() {
         return !ctx.objects.select().within(new Area(nw, se)).id(gateID).isEmpty()
-                && !ctx.players.local().inMotion()
                 && ctx.players.local().animation() == -1;
     }
 
