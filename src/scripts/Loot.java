@@ -16,7 +16,7 @@ public class Loot extends Task<ClientContext> {
 
     @Override
     public boolean activate() {
-        return !ctx.groundItems.select(9).id(feather, bones).isEmpty() // Activate if we have items to be picking up
+        return !ctx.groundItems.select(3).id(feather, bones).isEmpty() // Activate if we have items to be picking up
                 && ctx.backpack.select().count() < 28
                 && ctx.players.local().animation() == -1
                 && !ctx.players.local().inMotion();
@@ -24,8 +24,8 @@ public class Loot extends Task<ClientContext> {
 
     @Override
     public void execute() {
-        for (GroundItem i : ctx.groundItems) {
+        GroundItem i = ctx.groundItems.poll();
             i.interact("Take", i.name()); // We supply the Item Name as the option to prevent it grabbing the wrong thing
-        }
     }
-}
+    }
+

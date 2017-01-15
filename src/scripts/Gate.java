@@ -29,7 +29,6 @@ public class Gate extends Task<ClientContext> {
             gate.interact("Open");
         } else {
             ctx.movement.step(gate);
-            ctx.camera.turnTo(gate);
         }
     }
 }

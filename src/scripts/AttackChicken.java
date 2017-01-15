@@ -32,6 +32,10 @@ public class AttackChicken extends Task<ClientContext> {
     @Override
     public void execute() {
         Npc chicken = ctx.npcs.id(chickenID).nearest().poll();
-        chicken.interact("Attack");
+        if (chicken.inViewport()) {
+            chicken.interact("Attack");
+        } else {
+            ctx.camera.turnTo(chicken);
+        }
     }
 }
