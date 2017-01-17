@@ -13,10 +13,16 @@ public class WalkToChicken extends Task<ClientContext> {
     }
 
     public static final Tile[] PATH = {
-            new Tile(3206, 3282, 0),  //In front of pen
+            new Tile(3206, 3282, 0),  // In front of pen
             new Tile(3213, 3278, 0),
             new Tile(3215, 3269, 0),
-            new Tile(3214, 3257, 0)  //Near bank chest
+            new Tile(3214, 3257, 0),  // Near bank chest
+            new Tile(3231, 3228, 0),  // Near Lodestone
+            new Tile(3227, 3234, 0),
+            new Tile(3221, 3238, 0),
+            new Tile(3219, 3263, 0),
+            new Tile(3217, 3262, 0) // In front of bank area
+
     };
 
     Area penArea;

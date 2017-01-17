@@ -12,11 +12,11 @@ public class Loot extends Task<ClientContext> {
     }
 
     int feather = 314;
-    int bones = 526;
+    int rawChicken = 2138;
 
     @Override
     public boolean activate() {
-        return !ctx.groundItems.select(3).id(feather, bones).isEmpty() // Activate if we have items to be picking up
+        return !ctx.groundItems.select(3).id(feather, rawChicken).isEmpty() // Activate if we have items to be picking up
                 && ctx.backpack.select().count() < 28
                 && ctx.players.local().animation() == -1
                 && !ctx.players.local().inMotion();
